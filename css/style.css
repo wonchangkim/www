@@ -1,12 +1,88 @@
 @charset "utf-8";
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
+@import url("./normalize.css");
+@import url("./fonts.css");
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
+/* css reset */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 본문 스타일 */
+
+html {
+  font-size: 10px;
+}
+
+/* 폰트설정 1순위 2순위 설정:다운안될시 대처 */
+
+body {
+  font-family: 'Noto Sans Regular', sans-serif;
+  font-size: 1.4rem;
+  color: #181818;
+  background-color: #fff;
+}
+
+/* 상속컬러값과 agency 컬러값 -agency컬러값우선 */
+
+
+/* 10px*1.4em = 14px */
+
+
+/* font-size : 14px 고정픽셀 브라우져 확대 축소기능 사용안됨. em 사용 */
+
+
+/* Rem : root = m root위주 모바일디바이스 주로사용.수정용의
+
+em 상속위주
+ */
+
+
+/* 링크스타일 */
+
+a:link, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #f00;
+}
+
+/* 위 두속성 순서 중요. 순서바뀌면 작동 안됨 */
+
+
+/* a:link, */
+
+
+/* a:visited {
+  color: #666;
+} */
+
+
+/* inherit 상속값우선 */
+
+
+/* 여백초기화 */
+
+html, body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
 
 /* 공통 스타일 */
 
@@ -17,90 +93,140 @@
   display: block;
 }
 
-
 /* 레이아웃 설계 */
 
 .container {
   background-color: silver;
 }
-
-.header,
-.visual,
-.main-content,
-.slogan,
-.footer {
+.header, .visual, .main-content, .slogan, .footer {
   width: 940px;
   margin: 0 auto;
 }
 
+/* 헤더 */
+
 .header {
-  background-color: yellow;
-  height: 110px;
+  background-color: #fff;
+  position: relative;
 }
 
+/* 로고 */
+
+.logo {
+  position: absolute;
+  top: 45px;
+  left: 65px;
+}
+
+/* 멤벌 링크 */
+
+.member {
+  background-color: yellow;
+  text-transform: uppercase;
+  /* display: flex;
+  /* flex-direction: row;
+  justify-content: flex-end; */
+  /* float: right; */
+  font-size: 0px;
+  text-align: right;
+}
+.member li {
+  background-color: aqua;
+  display: inline-block;
+  font-size: 1.4rem;
+  padding: 10px 0;
+}
+
+/* inile width값 못 정함. 블록으로 바꾸고 설정 
+페딩값을 주면 부모높이 영향없음*/
+
+.member li:nth-child(+2)::before {
+  content: ":";
+}
+
+/* .member li::before {
+  content: ":";
+}
+.member li:first-child::before {
+  content: "";
+} */
+
+
+/* 다섯개 다줬다가 다시 없에는 방법 */
+
+.member a {
+  background-color: lime;
+  padding: 8px 0;
+}
+
+/* .member::after {
+  content: "";
+  display: block;
+  clear: both;
+} */
+
+
+/* .member li {
+  float: left;
+} */
+
+
+/* .navigation {
+  clear: both; */
+
+
+}
 .visual {
   background-color: pink;
   height: 120px;
 }
-
 .main-content {
   background-color: blue;
   padding: 30px 15px;
   min-height: 400px;
-  /*height: 60vh;
+  /*
+  height: 60vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center; */
 }
 
-
 /* justify-direction :row,column 메인축설정 */
-
 
 /* align-items 기준디렉션 교차방향 */
 
-
 /* padding-top:30px;
-    padding: 10px 10px 10px 10px 시계방향 top부터*/
-
+padding: 10px 10px 10px 10px 시계방향 top부터*/
 
 /* aling-contet 2줄이상 */
-
 .group {
   margin: 0 15px;
 }
-
 .group1 {
   width: 250px;
   float: left;
   background-color: lime;
 }
-
 .group2 {
   width: 380px;
   float: left;
   background-color: teal;
 }
 
-
 /* order 순서정하기 -1,0, 1은 뒤에위치 */
-
 .group3 {
   width: 190px;
   float: left;
   background-color: tomato;
 }
-
 .slogan {
   background-color: orange;
   padding: 15px 0;
 }
-
 .footer-bg {
   background-color: purple;
 }
-
 .footer {
   background-color: skyblue;
   padding: 15px 0;
