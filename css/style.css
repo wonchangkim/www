@@ -28,30 +28,12 @@ table {
 html {
   font-size: 10px;
 }
-
-/* 폰트설정 1순위 2순위 설정:다운안될시 대처 */
-
 body {
   font-family: 'Noto Sans Regular', sans-serif;
   font-size: 1.4rem;
   color: #181818;
   background-color: #fff;
 }
-
-/* 상속컬러값과 agency 컬러값 -agency컬러값우선 */
-
-
-/* 10px*1.4em = 14px */
-
-
-/* font-size : 14px 고정픽셀 브라우져 확대 축소기능 사용안됨. em 사용 */
-
-
-/* Rem : root = m root위주 모바일디바이스 주로사용.수정용의
-
-em 상속위주
- */
-
 
 /* 링크스타일 */
 
@@ -64,20 +46,6 @@ a:hover, a:focus {
   color: #f00;
 }
 
-/* 위 두속성 순서 중요. 순서바뀌면 작동 안됨 */
-
-
-/* a:link, */
-
-
-/* a:visited {
-  color: #666;
-} */
-
-
-/* inherit 상속값우선 */
-
-
 /* 여백초기화 */
 
 html, body, h1, h2, p {
@@ -87,37 +55,31 @@ html, body, h1, h2, p {
 
 /* 숨김 콘텐츠 */
 
-.readable-hidden {
+.readable-hidden, .a11y {
   position: absolute;
   width: 1px;
   height: 1px;
   overflow: hidden;
   margin: -1px;
   clip: rect(0, 0, 0, 0);
+  /* 표준 */
+  /* clip: rect(0 0 0 0); 구형 브라우저를 위한 방법 */
 }
 .a11y:focus {
+  top: 5px;
+  Left: 50%;
   width: auto;
   height: auto;
-  margin: 0px;
-  clip: rect(auto auto auto auto);
-  background-color: #000;
+  margin: 0;
+  clip: rect(auto, auto, auto, auto);
+  background: #000;
   color: #fff;
   padding: 5px 10px;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 /* 건너뛰기 링크 */
-
-
-/* .a11y:focus {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  background-color: #000;
-  color: #fff;
-  padding: 5px 10px;
-  z-index: 10;
-  transform: translatex(-50%);
-} */
 
 
 /* 공통 스타일 */
@@ -190,10 +152,17 @@ html, body, h1, h2, p {
 }
 .main-menu>li {
   float: left;
-  line-height: 45px;
+  position: relative;
+}
+
+/* float와 position 같이 사용가능 */
+
+.main-menu>li:focus {
+  outline: none;
 }
 .main-menu span {
   display: block;
+  line-height: 45px;
   font-size: 1.6rem;
   font-family: "Noto Sans Bold";
   color: #fff;
@@ -202,13 +171,62 @@ html, body, h1, h2, p {
   cursor: pointer;
   text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
 }
+
+/* span안에 텍스트상자 before 앞에  */
+
+.main-menu span:hover::after, .main-menu>li:focus span::after {
+  content: "";
+  display: block;
+  border-top: 2px solid #000;
+}
 .main-menu span:hover, .main-menu>li:focus span {
   color: #ffe032;
 }
 .sub-menu {
-  background-color: yellow;
   position: absolute;
+  top: 47px;
+  white-space: nowrap;
+  /* width: 500px 사용가능하나 비추천*/
   display: none;
+}
+.menu-act {
+  display: block !important;
+}
+
+/* importnat는 동적요소에 쓰는게 좋음 */
+
+.about-html {
+  left: 0;
+}
+.about-css {
+  left: 0;
+}
+.web-standards {
+  left: 0;
+}
+.web-accessibility {
+  right: 0;
+}
+.qna {
+  right: 0;
+}
+.archive {
+  right: 0;
+}
+.sub-menu li, .sub-menu a {
+  display: inline-block;
+}
+.sub-menu a {
+  padding: 4px 10px 4px 0;
+}
+.sub-menu a::before {
+  content: '\e803';
+  font-family: "fontello";
+  margin-right: 5px;
+  font-size: 1em;
+}
+.sub-menu a:hover::before {
+  content: '\e801';
 }
 
 /* 비쥬얼 */
