@@ -57,6 +57,7 @@ em 상속위주
 
 a:link, a:visited {
   color: inherit;
+  /* a(1점) :link(10점) .a11y(10점) */
   text-decoration: none;
 }
 a:hover, a:focus {
@@ -84,6 +85,41 @@ html, body, h1, h2, p {
   padding: 0;
 }
 
+/* 숨김 콘텐츠 */
+
+.readable-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+}
+.a11y:focus {
+  width: auto;
+  height: auto;
+  margin: 0px;
+  clip: rect(auto auto auto auto);
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+}
+
+/* 건너뛰기 링크 */
+
+
+/* .a11y:focus {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  z-index: 10;
+  transform: translatex(-50%);
+} */
+
+
 /* 공통 스타일 */
 
 .clearfix::after {
@@ -108,74 +144,75 @@ html, body, h1, h2, p {
 .header {
   background-color: #fff;
   position: relative;
+  padding: 0 30px 30px;
+  border-radius: 0 0 15px 15px;
 }
 
 /* 로고 */
 
 .logo {
   position: absolute;
-  top: 45px;
+  top: 48px;
   left: 65px;
 }
 
 /* 멤벌 링크 */
 
 .member {
-  background-color: yellow;
   text-transform: uppercase;
-  /* display: flex;
-  /* flex-direction: row;
-  justify-content: flex-end; */
-  /* float: right; */
   font-size: 0px;
   text-align: right;
+  position: relative;
+  transform: translateX(10px)
 }
 .member li {
-  background-color: aqua;
+  /* background-color: aqua; */
   display: inline-block;
   font-size: 1.4rem;
   padding: 10px 0;
 }
-
-/* inile width값 못 정함. 블록으로 바꾸고 설정 
-페딩값을 주면 부모높이 영향없음*/
-
-.member li:nth-child(+2)::before {
+.member li:nth-child(n+2)::before {
   content: ":";
 }
-
-/* .member li::before {
-  content: ":";
-}
-.member li:first-child::before {
-  content: "";
-} */
-
-
-/* 다섯개 다줬다가 다시 없에는 방법 */
-
 .member a {
-  background-color: lime;
-  padding: 8px 0;
+  padding: 8px 10px;
 }
 
-/* .member::after {
-  content: "";
-  display: block;
-  clear: both;
-} */
+/* 메인 메뉴 */
 
-
-/* .member li {
+.main-menu {
+  background: linear-gradient(to bottom, #ffe032 0%, #e0702a 35%, #e0702a 70%, #ffe032 100%);
+  background-color: #e0702a;
+  border-top: 2px solid #000;
+  border-radius: 0 0 5px 5px;
+  height: 47px;
+  padding-left: 225px;
+}
+.main-menu>li {
   float: left;
-} */
-
-
-/* .navigation {
-  clear: both; */
-
-
+  line-height: 45px;
 }
+.main-menu span {
+  display: block;
+  font-size: 1.6rem;
+  font-family: "Noto Sans Bold";
+  color: #fff;
+  padding: 0 20px;
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
+}
+.main-menu span:hover, .main-menu>li:focus span {
+  color: #ffe032;
+}
+.sub-menu {
+  background-color: yellow;
+  position: absolute;
+  display: none;
+}
+
+/* 비쥬얼 */
+
 .visual {
   background-color: pink;
   height: 120px;
@@ -194,12 +231,16 @@ html, body, h1, h2, p {
 
 /* justify-direction :row,column 메인축설정 */
 
+
 /* align-items 기준디렉션 교차방향 */
+
 
 /* padding-top:30px;
 padding: 10px 10px 10px 10px 시계방향 top부터*/
 
+
 /* aling-contet 2줄이상 */
+
 .group {
   margin: 0 15px;
 }
@@ -215,6 +256,7 @@ padding: 10px 10px 10px 10px 시계방향 top부터*/
 }
 
 /* order 순서정하기 -1,0, 1은 뒤에위치 */
+
 .group3 {
   width: 190px;
   float: left;
