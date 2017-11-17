@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+/* 모든 디바이스 */
+
+body {
+  background: yellow;
+}
+
+/* 참조 http://naradesign.net/wp/2012/05/30/1823/ */
+
+
+/* 태블릿 디바이스 이상 */
+
+@media screen and (min-width:768px) {
+  body {
+    background: pink;
+  }
+}

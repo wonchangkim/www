@@ -125,17 +125,8 @@ html, body, h1, h2, p {
 /* 레이아웃 설계 */
 
 .container {
-  /* background-image: url("images/bg_flower.png"), linear-gradient(to bottom, #aaa 0%, #eee 50%, #fff 100%); */
-  /* 백그라운드이미지 2개도 사용가능 css3 먼저선언한게 위로올라옴 */
-  /* background-repeat: no-repeat, repeat; */
-  /* 백그라운드이미지 반복없음 */
-  /* background-position: 50% 0, 0 0; */
-  background: url("images/bg_flower.png") no-repeat 50% 0, linear-gradient(to bottom, #aaa 0%, #eee 50%, #fff 100%) repeat 0 0;
-  /* background: url("images/bg_flower.png") no-repeat 50% 0 fixed, linear-gradient(to bottom, #aaa 0%, #eee 50%, #fff 100%) repeat 0 0 fixed; */
+  background-color: silver;
 }
-
-/* 단축 표기법 */
-
 .header, .visual, .main-content, .slogan, .footer {
   width: 940px;
   margin: 0 auto;
@@ -246,29 +237,25 @@ html, body, h1, h2, p {
   content: "";
   display: block;
   border-top: 2px solid #000;
+  margin-top: -2px;
+  /* position: relative;
+  bottom: 2px; */
 }
-.main-menu li:hover span, .main-menu>li:focus span {
+
+/* position을 relative로 바꾸고 bottm을 2px로 바꾸면 main-menu위로 올라감 */
+
+.main-menu span:hover, .main-menu>li:focus span {
   color: #ff0;
 }
-
-/* .main-menu span:hover */
-
-
-/* .main-menu li:hover span li 밑에 span 마우스갈때 유지 */
-
 .sub-menu {
   position: absolute;
   top: 47px;
   white-space: nowrap;
   display: none;
 }
-
-/* display:none 기본적으로 감췄다가 act 발생시 block */
-
 .menu-act {
   display: block !important;
 }
-.main-menu>li>ul>a {}
 .about-html {
   left: 0;
 }
@@ -298,8 +285,6 @@ html, body, h1, h2, p {
   font-family: "fontello";
   margin-right: 5px;
   font-size: 1.2rem;
-  display: inline-block;
-  width: 7px;
 }
 .sub-menu a:hover::before {
   content: '\e801';
@@ -307,110 +292,12 @@ html, body, h1, h2, p {
 
 /* 비주얼 */
 
-@keyframes text-ani {
-  /* from{} */
-  /* to{} */
-  0% {
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0);
-    transform: translate(0, 0);
-    /* top: 0;
-    left: 0; */
-  }
-  100% {
-    font-size: 24px;
-    color: rgba(0, 0, 0, 1);
-    transform: translate(400px, 70px);
-    /* top: 70px;
-    left: 400px; */
-  }
-}
-
-/* transform 이 성능이 더 좋은방식이다. 둘다사용가능 */
-
-
-/* opacity 는 블럭자치 투명도 */
-
-
-/* 애니메이션 선언 이름설정 */
-
 .visual {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: pink;
   height: 120px;
-  position: relative;
 }
-@keyframes flower-ani {
-  0% {
-    /* color: rgba(0, 0, 0, 0); */
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-.visual::before, .visual::after {
-  content: "";
-  /* before,after 컨텐츠없으면 상자 안만들어짐 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  animation: flower-ani 2s infinite alternate;
-}
-.visual::before {
-  background: url("images/ani_flower_01.png") no-repeat 0 -15px, url("images/ani_flower_02.png") no-repeat 670px 0;
-}
-.visual::after {
-  background: url("images/ani_flower_03.png") no-repeat 300px 0, url("images/ani_flower_04.png") no-repeat 800px 0;
-  animation-delay: 1s;
-}
-.visual-text {
-  position: absolute;
-  animation: text-ani 2s forwards ease-in-out;
-}
-
-/* animation-direction: alternate; 애니메이션 방향 alternate 정방향 반대반향 정방향 */
-
-
-/* animation-iteration-count: 3; 애니메이션 반복횟수 */
-
-
-/* position: absolute; *?
-      /*float:left :부모요소 높이설정되서 높이유지  */
-
-
-/* 인라인블럭 컨텐츠 크기만큼  */
-
-
-/* animation-fill-mode: forwards; 에니메이션 끝난 후에 forwards 고정 */
-
-
-}
-
-/* .box {
-  width: 100px;
-  height: 100px;
-  background-color: lime;
-  border: 2px solid black;
-  transition-property: border-radius, background;
-  transition-duration: 3s, 2s;
-  transition-delay: 0s, 3s;
-  transition-timing-function: ease-in-out; */
-
-/* transition: border-radius 3s 0s ease-in-out, background 2s 3s ease-in-out; */
-
-/* transition: border-radius 2s ease-in-out, background 2s ease-in-out; */
-
-/* transition: all 2s ease-in-out; */
-.box-act {
-  border-radius: 50%;
-  background-color: aqua;
-}
-
-/* 메인콘텐츠 */
 .main-content {
-  background-color: white;
+  background-color: blue;
   padding: 30px 15px;
   min-height: 400px;
   /*
@@ -423,12 +310,16 @@ html, body, h1, h2, p {
 
 /* justify-direction :row,column 메인축설정 */
 
+
 /* align-items 기준디렉션 교차방향 */
+
 
 /* padding-top:30px;
 padding: 10px 10px 10px 10px 시계방향 top부터*/
 
+
 /* aling-contet 2줄이상 */
+
 .group {
   margin: 0 15px;
 }
@@ -444,6 +335,7 @@ padding: 10px 10px 10px 10px 시계방향 top부터*/
 }
 
 /* order 순서정하기 -1,0, 1은 뒤에위치 */
+
 .group3 {
   width: 190px;
   float: left;
