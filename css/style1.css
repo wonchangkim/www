@@ -238,6 +238,7 @@ html, body, h1, h2, p {
   display: block;
   border-top: 2px solid #000;
   margin-top: -2px;
+  /* border-top 위로올리기 */
   /* position: relative;
   bottom: 2px; */
 }
@@ -285,6 +286,8 @@ html, body, h1, h2, p {
   font-family: "fontello";
   margin-right: 5px;
   font-size: 1.2rem;
+  display: inline-block;
+  width: 7px;
 }
 .sub-menu a:hover::before {
   content: '\e801';

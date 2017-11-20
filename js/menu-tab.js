@@ -10,9 +10,6 @@ $(document).ready(function() {
     $(this).siblings().find('.sub-menu').removeClass('menu-act');
     $(this).find('.sub-menu').addClass('menu-act');
   });
-  animationbox.on('click ' () {
-    $(this).toggleClass('box-act');
-  });
 
 
 
